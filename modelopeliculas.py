@@ -1,9 +1,8 @@
 class ModeloPeliculas:
     def __init__(self):
-        self.peliculas = [
+        self._peliculas = [
             {
                 'titulo': "Son como niños",
-
                 'sinopsis': "Un grupo de amigos se reúne para revivir su infancia.",
                 'actores': ["Adam Sandler", "Kevin James"],
                 'puntuacion': "6.0"
@@ -59,14 +58,12 @@ class ModeloPeliculas:
         ]
 
     def buscar_pelicula(self, nombre):
-        return [pelicula for pelicula in self.peliculas if nombre.lower() in pelicula['titulo'].lower()]
+        return [pelicula for pelicula in self._peliculas if nombre.lower() in pelicula['titulo'].lower()]
 
     def obtener_informacion_pelicula(self, titulo):
-        for pelicula in self.peliculas:
+        for pelicula in self._peliculas:
             if pelicula['titulo'] == titulo:
                 return pelicula
-        return None
 
     def buscar_por_actor(self, actor):
-        return [pelicula['titulo'] for pelicula in self.peliculas if actor in pelicula['actores']]
-
+        return [pelicula['titulo'] for pelicula in self._peliculas if actor in pelicula['actores']]

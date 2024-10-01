@@ -9,51 +9,51 @@ class UiMainWindow(object):
         if not main_window.objectName():
             main_window.setObjectName(u"MainWindow")
         main_window.resize(800, 600)
-        self.centralwidget = QWidget(main_window)
-        self.centralwidget.setObjectName(u"centralwidget")
-        self.gridLayout = QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName(u"gridLayout")
+        self._central_widget = QWidget(main_window)
+        self._central_widget.setObjectName(u"centralwidget")
+        self._grid_layout = QGridLayout(self._central_widget)
+        self._grid_layout.setObjectName(u"gridLayout")
 
-        self.listWidget = QListWidget(self.centralwidget)
-        self.listWidget.setObjectName(u"listWidget")
-        self.listWidget.setMaximumSize(QSize(16777215, 500))
-        self.gridLayout.addWidget(self.listWidget, 2, 0, 1, 5)
+        self._list_widget = QListWidget(self._central_widget)
+        self._list_widget.setObjectName(u"listWidget")
+        self._list_widget.setMaximumSize(QSize(16777215, 500))
+        self._grid_layout.addWidget(self._list_widget, 2, 0, 1, 5)
 
-        self.cargar_peliculas_iniciales()
+        self._cargar_peliculas_iniciales()
 
-        self.boton_buscar_por_actores = QPushButton(self.centralwidget)
-        self.boton_buscar_por_actores.setObjectName(u"pushButton_2")
-        self.gridLayout.addWidget(self.boton_buscar_por_actores, 0, 1, 1, 1)
+        self._boton_buscar_por_actores = QPushButton(self._central_widget)
+        self._boton_buscar_por_actores.setObjectName(u"pushButton_2")
+        self._grid_layout.addWidget(self._boton_buscar_por_actores, 0, 1, 1, 1)
 
-        self.boton_buscar_pelicula = QPushButton(self.centralwidget)
-        self.boton_buscar_pelicula.setObjectName(u"pushButton")
-        self.gridLayout.addWidget(self.boton_buscar_pelicula, 0, 4, 1, 1)
+        self._boton_buscar_pelicula = QPushButton(self._central_widget)
+        self._boton_buscar_pelicula.setObjectName(u"pushButton")
+        self._grid_layout.addWidget(self._boton_buscar_pelicula, 0, 4, 1, 1)
 
-        self.lineEdit = QLineEdit(self.centralwidget)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.gridLayout.addWidget(self.lineEdit, 0, 3, 1, 1)
+        self._line_edit = QLineEdit(self._central_widget)
+        self._line_edit.setObjectName(u"lineEdit")
+        self._grid_layout.addWidget(self._line_edit, 0, 3, 1, 1)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-        self.gridLayout.addItem(self.horizontalSpacer, 1, 3, 1, 1)
+        self._horizontal_spacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self._grid_layout.addItem(self._horizontal_spacer, 1, 3, 1, 1)
 
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName(u"label")
-        self.label.setMaximumSize(QSize(16777215, 20))
-        self.gridLayout.addWidget(self.label, 1, 1, 1, 1)
+        self._label = QLabel(self._central_widget)
+        self._label.setObjectName(u"label")
+        self._label.setMaximumSize(QSize(16777215, 20))
+        self._grid_layout.addWidget(self._label, 1, 1, 1, 1)
 
-        main_window.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(main_window)
-        self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 800, 22))
-        main_window.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(main_window)
-        self.statusbar.setObjectName(u"statusbar")
-        main_window.setStatusBar(self.statusbar)
+        main_window.setCentralWidget(self._central_widget)
+        self._menu_bar = QMenuBar(main_window)
+        self._menu_bar.setObjectName(u"menubar")
+        self._menu_bar.setGeometry(QRect(0, 0, 800, 22))
+        main_window.setMenuBar(self._menu_bar)
+        self._status_bar = QStatusBar(main_window)
+        self._status_bar.setObjectName(u"statusbar")
+        main_window.setStatusBar(self._status_bar)
 
-        self.retranslate_ui(main_window)
+        self._retranslate_ui(main_window)
         QMetaObject.connectSlotsByName(main_window)
 
-    def cargar_peliculas_iniciales(self):
+    def _cargar_peliculas_iniciales(self):
         peliculas_iniciales = [
             "Son como niños",
             "Titanic",
@@ -66,23 +66,23 @@ class UiMainWindow(object):
             "Entre la vida y la muerte"
         ]
         for pelicula in peliculas_iniciales:
-            self.listWidget.addItem(pelicula)
+            self._list_widget.addItem(pelicula)
 
-    def retranslate_ui(self, main_window):
+    def _retranslate_ui(self, main_window):
         main_window.setWindowTitle(QCoreApplication.translate("MainWindow", u"Buscador de Películas", None))
-        __sortingEnabled = self.listWidget.isSortingEnabled()
-        self.listWidget.setSortingEnabled(False)
+        __sorting_enabled = self._list_widget.isSortingEnabled()
+        self._list_widget.setSortingEnabled(False)
 
-        for i in range(self.listWidget.count()):
-            item = self.listWidget.item(i)
+        for i in range(self._list_widget.count()):
+            item = self._list_widget.item(i)
             item.setText(QCoreApplication.translate("MainWindow", item.text(), None))
 
-        self.listWidget.setSortingEnabled(__sortingEnabled)
+        self._list_widget.setSortingEnabled(__sorting_enabled)
 
-        self.boton_buscar_por_actores.setText(QCoreApplication.translate("MainWindow", u"Buscar por actores", None))
-        self.boton_buscar_pelicula.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
-        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingresar nombre de película...", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Películas:", None))
+        self._boton_buscar_por_actores.setText(QCoreApplication.translate("MainWindow", u"Buscar por actores", None))
+        self._boton_buscar_pelicula.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
+        self._line_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingresar nombre de película...", None))
+        self._label.setText(QCoreApplication.translate("MainWindow", u"Películas:", None))
 
 
 class DetallesPeliculaDialog(QDialog):

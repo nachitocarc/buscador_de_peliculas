@@ -18,7 +18,7 @@ class __MainWindow(QMainWindow):
         self._ui._list_widget.itemClicked.connect(self._mostrar_detalles_pelicula)
 
     def _buscar_pelicula(self):
-        nombre_pelicula = self._ui._line_edit.text()
+        nombre_pelicula = self._ui._line_edit.text()  # Cambiado aquí también
         self._ui._list_widget.clear()
         peliculas_encontradas = self._modelo.buscar_pelicula(nombre_pelicula)
 
@@ -71,7 +71,7 @@ class __MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    modelo = ModeloPeliculas('peliculas.json')
+    modelo = ModeloPeliculas('peliculas.json')  # Asegúrate de que el archivo JSON esté en la ubicación correcta
     window = __MainWindow(modelo)
     window.show()
     sys.exit(app.exec())

@@ -1,4 +1,3 @@
-#modelo
 import json
 
 

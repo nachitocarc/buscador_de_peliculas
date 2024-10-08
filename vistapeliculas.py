@@ -1,4 +1,3 @@
-#vista
 from PySide6.QtCore import QSize, QRect, QCoreApplication, QMetaObject
 from PySide6.QtWidgets import (QWidget, QGridLayout, QListWidget,
                                QPushButton, QLineEdit, QSpacerItem, QSizePolicy, QLabel, QStatusBar, QDialog,

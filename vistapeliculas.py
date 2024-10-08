@@ -1,3 +1,4 @@
+#vista
 from PySide6.QtCore import QSize, QRect, QCoreApplication, QMetaObject
 from PySide6.QtWidgets import (QWidget, QGridLayout, QListWidget,
                                QPushButton, QLineEdit, QSpacerItem, QSizePolicy, QLabel, QStatusBar, QDialog,
@@ -83,6 +84,18 @@ class UiMainWindow(object):
         self._boton_buscar_pelicula.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
         self._line_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingresar nombre de película...", None))
         self._label.setText(QCoreApplication.translate("MainWindow", u"Películas:", None))
+
+    @property
+    def boton_buscar_pelicula(self):
+        return self._boton_buscar_pelicula
+
+    @property
+    def boton_buscar_por_actores(self):
+        return self._boton_buscar_por_actores
+
+    @property
+    def list_widget(self):
+        return self._list_widget
 
 
 class DetallesPeliculaDialog(QDialog):

@@ -5,13 +5,13 @@ from modelopeliculas import ModeloPeliculas
 from vistapeliculas import UiMainWindow, DetallesPeliculaDialog
 
 
-class MainWindow(QMainWindow):
-    def __init__(self):
+class __MainWindow(QMainWindow):
+    def __init__(self, modelo):
         super().__init__()
         self._ui = UiMainWindow()
         self._ui.setup_ui(self)
 
-        self._modelo = ModeloPeliculas()
+        self._modelo = modelo
 
         self._ui._boton_buscar_pelicula.clicked.connect(self._buscar_pelicula)
         self._ui._boton_buscar_por_actores.clicked.connect(self._abrir_buscar_por_actores)
@@ -71,6 +71,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MainWindow()
+    modelo = ModeloPeliculas('peliculas.json')  # Asegúrate de que el archivo JSON esté en la ubicación correcta
+    window = __MainWindow(modelo)
     window.show()
     sys.exit(app.exec())

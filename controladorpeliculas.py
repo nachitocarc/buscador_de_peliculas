@@ -4,7 +4,7 @@ from modelopeliculas import ModeloPeliculas
 from vistapeliculas import UiMainWindow, DetallesPeliculaDialog
 
 
-class MainWindow(QMainWindow):
+class __MainWindow(QMainWindow):
     def __init__(self, modelo):
         super().__init__()
         self._ui = UiMainWindow()
@@ -17,12 +17,12 @@ class MainWindow(QMainWindow):
         self._ui.list_widget.itemClicked.connect(self._mostrar_detalles_pelicula)
 
     def _buscar_pelicula(self):
-        nombre_pelicula = self._ui.line_edit.text()
-        self._ui.list_widget.clear()
+        nombre_pelicula = self._ui._line_edit.text()
+        self._ui._list_widget.clear()
         peliculas_encontradas = self._modelo.buscar_pelicula(nombre_pelicula)
 
         for pelicula in peliculas_encontradas:
-            self._ui.list_widget.addItem(pelicula['titulo'])
+            self._ui._list_widget.addItem(pelicula['titulo'])
 
     def _mostrar_detalles_pelicula(self, item):
         titulo_pelicula = item.text()
@@ -71,6 +71,6 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     modelo = ModeloPeliculas('peliculas.json')
-    window = MainWindow(modelo)
+    window = __MainWindow(modelo)
     window.show()
     sys.exit(app.exec())

@@ -18,4 +18,6 @@ class ModeloPeliculas:
                 return pelicula
 
     def buscar_por_actor(self, actor):
-        return [pelicula['titulo'] for pelicula in self._peliculas if actor in pelicula['actores']]
+        actor_lower = actor.lower()
+        return [pelicula['titulo'] for pelicula in self._peliculas if
+                actor_lower in (a.lower() for a in pelicula['actores'])]

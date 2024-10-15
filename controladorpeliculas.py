@@ -12,7 +12,6 @@ class MainWindow(QMainWindow):
 
         self._modelo = modelo
 
-        # Cargar las películas desde el modelo al iniciar
         self._cargar_peliculas()
 
         self._ui.boton_buscar_pelicula.clicked.connect(self._buscar_pelicula)
@@ -20,7 +19,7 @@ class MainWindow(QMainWindow):
         self._ui.list_widget.itemClicked.connect(self._mostrar_detalles_pelicula)
 
     def _cargar_peliculas(self):
-        peliculas = self._modelo._peliculas  # Obtener todas las películas del modelo
+        peliculas = self._modelo._peliculas
         self._ui.list_widget.clear()
         for pelicula in peliculas:
             self._ui.list_widget.addItem(pelicula['titulo'])

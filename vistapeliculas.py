@@ -20,8 +20,6 @@ class UiMainWindow(object):
         self.list_widget.setMaximumSize(QSize(16777215, 500))
         self._grid_layout.addWidget(self.list_widget, 2, 0, 1, 5)
 
-        self._cargar_peliculas_iniciales()
-
         self.boton_buscar_por_actores = QPushButton(self._central_widget)
         self.boton_buscar_por_actores.setObjectName(u"pushButton_2")
         self._grid_layout.addWidget(self.boton_buscar_por_actores, 0, 1, 1, 1)
@@ -53,21 +51,6 @@ class UiMainWindow(object):
 
         self._retranslate_ui(main_window)
         QMetaObject.connectSlotsByName(main_window)
-
-    def _cargar_peliculas_iniciales(self):
-        peliculas_iniciales = [
-            "Son como niños",
-            "Titanic",
-            "Mi primer beso",
-            "Chiquito pero peligroso",
-            "Violet y Finch",
-            "El hijo de la novia",
-            "Super cool",
-            "Un espía y medio",
-            "Entre la vida y la muerte"
-        ]
-        for pelicula in peliculas_iniciales:
-            self.list_widget.addItem(pelicula)
 
     def _retranslate_ui(self, main_window):
         main_window.setWindowTitle(QCoreApplication.translate("MainWindow", u"Buscador de Películas", None))
@@ -112,7 +95,7 @@ class DetallesPeliculaDialog(QDialog):
         sinopsis_label = QLabel(f"Sinopsis: {pelicula['sinopsis']}", self)
         layout.addWidget(sinopsis_label)
 
-        puntuacion_label = QLabel(f"puntuacion: {pelicula['puntuacion']}", self)
+        puntuacion_label = QLabel(f"Puntuación: {pelicula['puntuacion']}", self)
         layout.addWidget(puntuacion_label)
 
         self.setLayout(layout)

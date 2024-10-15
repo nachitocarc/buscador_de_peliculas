@@ -12,9 +12,18 @@ class MainWindow(QMainWindow):
 
         self._modelo = modelo
 
+        # Cargar las películas desde el modelo al iniciar
+        self._cargar_peliculas()
+
         self._ui.boton_buscar_pelicula.clicked.connect(self._buscar_pelicula)
         self._ui.boton_buscar_por_actores.clicked.connect(self._abrir_buscar_por_actores)
         self._ui.list_widget.itemClicked.connect(self._mostrar_detalles_pelicula)
+
+    def _cargar_peliculas(self):
+        peliculas = self._modelo._peliculas  # Obtener todas las películas del modelo
+        self._ui.list_widget.clear()
+        for pelicula in peliculas:
+            self._ui.list_widget.addItem(pelicula['titulo'])
 
     def _buscar_pelicula(self):
         nombre_pelicula = self._ui.line_edit.text()

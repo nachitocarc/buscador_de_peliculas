@@ -6,7 +6,7 @@
             "Adam Sandler",
             "Kevin James"
         ],
-        "poster": "soncomoniños.jpg",
+        "poster": "posters/soncomoniños.jpg",
         "puntuacion": "6.0"
     },
     {
@@ -16,7 +16,7 @@
             "Leonardo DiCaprio",
             "Kate Winslet"
         ],
-        "poster": "titanic.jpg",
+        "poster": "posters/titanic.jpg",
         "puntuacion": "7.8"
     },
     {
@@ -26,7 +26,7 @@
             "Anna Chlumsky",
             "Macaulay Culkin"
         ],
-        "poster": "miprimerbeso.jpg",
+        "poster": "posters/miprimerbeso.jpg",
         "puntuacion": "6.8"
     },
     {
@@ -36,7 +36,7 @@
             "Kevin Spacey",
             "Drew Barrymore"
         ],
-        "poster": "chiquitoperopeligroso.jpg",
+        "poster": "posters/chiquitoperopeligroso.jpg",
         "puntuacion": "5.6"
     },
     {
@@ -46,7 +46,7 @@
             "Justice Smith",
             "Elle Fanning"
         ],
-        "poster": "violetyfinch.jpg",
+        "poster": "posters/violetyfinch.jpg",
         "puntuacion": "6.5"
     },
     {
@@ -56,7 +56,7 @@
             "Ricardo Darín",
             "Natalia Verbeke"
         ],
-        "poster": "elhijodelanovia.jpg",
+        "poster": "posters/elhijodelanovia.jpg",
         "puntuacion": "7.4"
     },
     {
@@ -66,7 +66,7 @@
             "Jonah Hill",
             "Michael Cera"
         ],
-        "poster": "supercool.jpg",
+        "poster": "posters/supercool.jpg",
         "puntuacion": "7.0"
     },
     {
@@ -76,7 +76,7 @@
             "Dwayne Johnson",
             "Kevin Hart"
         ],
-        "poster": "unespiaymedio.jpg",
+        "poster": "posters/unespiaymedio.jpg",
         "puntuacion": "6.2"
     },
     {
@@ -86,7 +86,7 @@
             "Benicio Del Toro",
             "Jason Patric"
         ],
-        "poster": "entrelavidaylamuerte.jpg",
+        "poster": "posters/entrelavidaylamuerte.jpg",
         "puntuacion": "6.1"
     }
 ]

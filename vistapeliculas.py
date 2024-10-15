@@ -112,4 +112,7 @@ class DetallesPeliculaDialog(QDialog):
         sinopsis_label = QLabel(f"Sinopsis: {pelicula['sinopsis']}", self)
         layout.addWidget(sinopsis_label)
 
+        puntuacion_label = QLabel(f"puntuacion: {pelicula['puntuacion']}", self)
+        layout.addWidget(puntuacion_label)
+
         self.setLayout(layout)

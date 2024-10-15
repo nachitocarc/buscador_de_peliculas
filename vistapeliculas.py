@@ -81,7 +81,6 @@ class DetallesPeliculaDialog(QDialog):
         poster_pixmap = QPixmap(pelicula["poster"])
 
         if poster_pixmap.isNull():
-            print("Error: No se pudo cargar la imagen.")
             poster_label.setText("No se pudo cargar el póster.")
         else:
             scaled_pixmap = poster_pixmap.scaled(350, 400)
@@ -97,5 +96,8 @@ class DetallesPeliculaDialog(QDialog):
 
         puntuacion_label = QLabel(f"Puntuación: {pelicula['puntuacion']}", self)
         layout.addWidget(puntuacion_label)
+
+        actores_label = QLabel(f"Actores: {', '.join(pelicula['actores'])}", self)
+        layout.addWidget(actores_label)
 
         self.setLayout(layout)

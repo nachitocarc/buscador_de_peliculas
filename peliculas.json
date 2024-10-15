@@ -7,7 +7,7 @@
             "Kevin James"
         ],
         "poster": "posters/soncomoniños.jpg",
-        "puntuacion": "6.0"
+        "puntuacion": "9.0"
     },
     {
         "titulo": "Titanic",
@@ -17,7 +17,7 @@
             "Kate Winslet"
         ],
         "poster": "posters/titanic.jpg",
-        "puntuacion": "7.8"
+        "puntuacion": "6.5"
     },
     {
         "titulo": "Mi primer beso",
@@ -27,7 +27,7 @@
             "Macaulay Culkin"
         ],
         "poster": "posters/miprimerbeso.jpg",
-        "puntuacion": "6.8"
+        "puntuacion": "9.5"
     },
     {
         "titulo": "Chiquito pero peligroso",
@@ -37,7 +37,7 @@
             "Drew Barrymore"
         ],
         "poster": "posters/chiquitoperopeligroso.jpg",
-        "puntuacion": "5.6"
+        "puntuacion": "8"
     },
     {
         "titulo": "Violet y Finch",
@@ -47,7 +47,7 @@
             "Elle Fanning"
         ],
         "poster": "posters/violetyfinch.jpg",
-        "puntuacion": "6.5"
+        "puntuacion": "8.5"
     },
     {
         "titulo": "El hijo de la novia",
@@ -57,7 +57,7 @@
             "Natalia Verbeke"
         ],
         "poster": "posters/elhijodelanovia.jpg",
-        "puntuacion": "7.4"
+        "puntuacion": "7.5"
     },
     {
         "titulo": "Super cool",
@@ -67,7 +67,7 @@
             "Michael Cera"
         ],
         "poster": "posters/supercool.jpg",
-        "puntuacion": "7.0"
+        "puntuacion": "9.5"
     },
     {
         "titulo": "Un espía y medio",
@@ -77,7 +77,7 @@
             "Kevin Hart"
         ],
         "poster": "posters/unespiaymedio.jpg",
-        "puntuacion": "6.2"
+        "puntuacion": "7"
     },
     {
         "titulo": "Entre la vida y la muerte",
@@ -87,6 +87,6 @@
             "Jason Patric"
         ],
         "poster": "posters/entrelavidaylamuerte.jpg",
-        "puntuacion": "6.1"
+        "puntuacion": "7.5"
     }
 ]

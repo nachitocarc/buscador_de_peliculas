@@ -6,7 +6,7 @@ from PySide6.QtGui import QPixmap
 
 
 class UiMainWindow(object):
-    def setup_ui(self, main_window):
+    def _setup_ui(self, main_window):
         if not main_window.objectName():
             main_window.setObjectName(u"MainWindow")
         main_window.resize(800, 600)
@@ -49,10 +49,10 @@ class UiMainWindow(object):
         self._status_bar.setObjectName(u"statusbar")
         main_window.setStatusBar(self._status_bar)
 
-        self._retranslate_ui(main_window)
+        self.__retranslate_ui(main_window)
         QMetaObject.connectSlotsByName(main_window)
 
-    def _retranslate_ui(self, main_window):
+    def __retranslate_ui(self, main_window):
         main_window.setWindowTitle(QCoreApplication.translate("MainWindow", u"Buscador de Películas", None))
         __sorting_enabled = self.list_widget.isSortingEnabled()
         self.list_widget.setSortingEnabled(False)

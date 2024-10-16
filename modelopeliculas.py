@@ -17,10 +17,12 @@ class ModeloPeliculas:
             if pelicula['titulo'] == titulo:
                 return pelicula
 
-    def buscar_por_actor(self, actor):
-        actor_lower = actor.lower()
-        return [pelicula['titulo'] for pelicula in self.__peliculas if
-                actor_lower in (a.lower() for a in pelicula['actores'])]
+    def buscar_por_dos_actores(self, actor1, actor2):
+        actor1_lower = actor1.lower()
+        actor2_lower = actor2.lower()
+        return [pelicula['titulo'] for pelicula in self.__peliculas
+                if actor1_lower in (a.lower() for a in pelicula['actores'])
+                and actor2_lower in (a.lower() for a in pelicula['actores'])]
 
     def obtener_titulos(self):
         return [pelicula['titulo'] for pelicula in self.__peliculas]

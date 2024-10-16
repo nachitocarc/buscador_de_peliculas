@@ -1,5 +1,6 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QCompleter
+from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, \
+    QCompleter
 from PySide6.QtCore import Qt
 from modelopeliculas import ModeloPeliculas
 from vistapeliculas import UiMainWindow, DetallesPeliculaDialog
@@ -53,24 +54,40 @@ class MainWindow(QMainWindow):
         dialog.setWindowTitle("Buscar por Actores")
         layout = QVBoxLayout(dialog)
 
-        label = QLabel("Ingresa el nombre del actor:", dialog)
-        layout.addWidget(label)
+        label1 = QLabel("Ingresa el nombre del primer actor:", dialog)
+        layout.addWidget(label1)
+        actor1_input = QLineEdit(dialog)
+        layout.addWidget(actor1_input)
+        self.__configurar_completer(self._modelo.obtener_actores(), actor1_input)
 
-        actor_input = QLineEdit(dialog)
-        layout.addWidget(actor_input)
-
-        self.__configurar_completer(self._modelo.obtener_actores(), actor_input)
+        label2 = QLabel("Ingresa el nombre del segundo actor:", dialog)
+        layout.addWidget(label2)
+        actor2_input = QLineEdit(dialog)
+        layout.addWidget(actor2_input)
+        self.__configurar_completer(self._modelo.obtener_actores(), actor2_input)
 
         boton_buscar = QPushButton("Buscar", dialog)
         layout.addWidget(boton_buscar)
 
-        boton_buscar.clicked.connect(lambda: self.__buscar_por_actor(actor_input.text()))
+        boton_buscar.clicked.connect(lambda: self.__buscar_por_dos_actores(actor1_input.text(), actor2_input.text()))
 
         dialog.setLayout(layout)
         dialog.exec()
 
-    def __buscar_por_actor(self, actor):
-        peliculas_encontradas = self._modelo.buscar_por_actor(actor)
+    def __buscar_por_dos_actores(self, actor1, actor2):
+
+        if not actor1.strip() or not actor2.strip():
+            error_dialog = QDialog(self)
+            error_dialog.setWindowTitle("Error")
+            layout = QVBoxLayout(error_dialog)
+            error_label = QLabel("Por favor, ingresa ambos nombres de actores.", error_dialog)
+            layout.addWidget(error_label)
+            error_dialog.setLayout(layout)
+            error_dialog.exec()
+            return
+
+        peliculas_encontradas = self._modelo.buscar_por_dos_actores(actor1, actor2)
+
         self._ui.list_widget.clear()
         for titulo in peliculas_encontradas:
             self._ui.list_widget.addItem(titulo)

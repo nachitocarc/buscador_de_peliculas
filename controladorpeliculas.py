@@ -80,7 +80,7 @@ class MainWindow(QMainWindow):
             error_dialog = QDialog(self)
             error_dialog.setWindowTitle("Error")
             layout = QVBoxLayout(error_dialog)
-            error_label = QLabel("Por favor, ingresa ambos nombres de actores.", error_dialog)
+            error_label = QLabel("Ingresa el nombre de los 2 actores.", error_dialog)
             layout.addWidget(error_label)
             error_dialog.setLayout(layout)
             error_dialog.exec()

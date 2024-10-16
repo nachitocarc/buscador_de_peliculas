@@ -83,7 +83,7 @@ class DetallesPeliculaDialog(QDialog):
         if poster_pixmap.isNull():
             poster_label.setText("No se pudo cargar el póster.")
         else:
-            scaled_pixmap = poster_pixmap.scaled(350, 400)
+            scaled_pixmap = poster_pixmap.scaled(200, 300)
             poster_label.setPixmap(scaled_pixmap)
 
         layout.addWidget(poster_label)

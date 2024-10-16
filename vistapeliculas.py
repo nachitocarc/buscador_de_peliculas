@@ -100,4 +100,7 @@ class DetallesPeliculaDialog(QDialog):
         actores_label = QLabel(f"Actores: {', '.join(pelicula['actores'])}", self)
         layout.addWidget(actores_label)
 
+        genero_label = QLabel(f"Genero: {pelicula['genero']}", self)
+        layout.addWidget(genero_label)
+
         self.setLayout(layout)

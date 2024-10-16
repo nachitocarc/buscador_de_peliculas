@@ -7,7 +7,8 @@
             "Kevin James"
         ],
         "poster": "posters/soncomoniños.jpg",
-        "puntuacion": "9.0"
+        "puntuacion": "9.0",
+        "genero": "Comedia"
     },
     {
         "titulo": "Titanic",
@@ -17,7 +18,8 @@
             "Kate Winslet"
         ],
         "poster": "posters/titanic.jpg",
-        "puntuacion": "6.5"
+        "puntuacion": "6.5",
+        "genero": "Romance"
     },
     {
         "titulo": "Mi primer beso",
@@ -27,7 +29,8 @@
             "Macaulay Culkin"
         ],
         "poster": "posters/miprimerbeso.jpg",
-        "puntuacion": "9.5"
+        "puntuacion": "9.5",
+        "genero": "Drama"
     },
     {
         "titulo": "Chiquito pero peligroso",
@@ -37,7 +40,8 @@
             "Drew Barrymore"
         ],
         "poster": "posters/chiquitoperopeligroso.jpg",
-        "puntuacion": "8"
+        "puntuacion": "8",
+        "genero": "Acción"
     },
     {
         "titulo": "Violet y Finch",
@@ -47,7 +51,8 @@
             "Elle Fanning"
         ],
         "poster": "posters/violetyfinch.jpg",
-        "puntuacion": "8.5"
+        "puntuacion": "8.5",
+        "genero": "Romance"
     },
     {
         "titulo": "El hijo de la novia",
@@ -57,7 +62,8 @@
             "Natalia Verbeke"
         ],
         "poster": "posters/elhijodelanovia.jpg",
-        "puntuacion": "7.5"
+        "puntuacion": "7.5",
+        "genero": "Drama"
     },
     {
         "titulo": "Super cool",
@@ -67,7 +73,8 @@
             "Michael Cera"
         ],
         "poster": "posters/supercool.jpg",
-        "puntuacion": "9.5"
+        "puntuacion": "9.5",
+        "genero": "Comedia"
     },
     {
         "titulo": "Un espía y medio",
@@ -77,7 +84,8 @@
             "Kevin Hart"
         ],
         "poster": "posters/unespiaymedio.jpg",
-        "puntuacion": "7"
+        "puntuacion": "7",
+        "genero": "Acción"
     },
     {
         "titulo": "Entre la vida y la muerte",
@@ -87,6 +95,8 @@
             "Jason Patric"
         ],
         "poster": "posters/entrelavidaylamuerte.jpg",
-        "puntuacion": "7.5"
+        "puntuacion": "7.5",
+        "genero": "Drama"
     }
 ]
+

@@ -8,7 +8,7 @@
         ],
         "poster": "posters/soncomoniños.jpg",
         "puntuacion": "9.0",
-        "genero": "Comedia"
+        "género": "Comedia"
     },
     {
         "titulo": "Titanic",
@@ -19,7 +19,7 @@
         ],
         "poster": "posters/titanic.jpg",
         "puntuacion": "6.5",
-        "genero": "Romance"
+        "género": "Romance"
     },
     {
         "titulo": "Mi primer beso",
@@ -30,7 +30,7 @@
         ],
         "poster": "posters/miprimerbeso.jpg",
         "puntuacion": "9.5",
-        "genero": "Drama"
+        "género": "Drama"
     },
     {
         "titulo": "Chiquito pero peligroso",
@@ -41,7 +41,7 @@
         ],
         "poster": "posters/chiquitoperopeligroso.jpg",
         "puntuacion": "8",
-        "genero": "Acción"
+        "género": "Acción"
     },
     {
         "titulo": "Violet y Finch",
@@ -52,7 +52,7 @@
         ],
         "poster": "posters/violetyfinch.jpg",
         "puntuacion": "8.5",
-        "genero": "Romance"
+        "género": "Romance"
     },
     {
         "titulo": "El hijo de la novia",
@@ -63,7 +63,7 @@
         ],
         "poster": "posters/elhijodelanovia.jpg",
         "puntuacion": "7.5",
-        "genero": "Drama"
+        "género": "Drama"
     },
     {
         "titulo": "Super cool",
@@ -74,7 +74,7 @@
         ],
         "poster": "posters/supercool.jpg",
         "puntuacion": "9.5",
-        "genero": "Comedia"
+        "género": "Comedia"
     },
     {
         "titulo": "Un espía y medio",
@@ -84,8 +84,8 @@
             "Kevin Hart"
         ],
         "poster": "posters/unespiaymedio.jpg",
-        "puntuacion": "7",
-        "genero": "Acción"
+        "puntuacion": "8",
+        "género": "Acción"
     },
     {
         "titulo": "Entre la vida y la muerte",
@@ -96,7 +96,84 @@
         ],
         "poster": "posters/entrelavidaylamuerte.jpg",
         "puntuacion": "7.5",
-        "genero": "Drama"
-    }
-]
+        "género": "Drama"
+    },
+    {
+        "titulo": "La vida es bella",
+        "sinopsis": "Un padre utiliza su imaginación para proteger a su hijo de los horrores de un campo de concentración.",
+        "actores": [
+            "Roberto Benigni",
+            "Nicoletta Braschi"
+        ],
+        "poster": "posters/lavidaesbella.jpg",
+        "puntuacion": "8.5",
+        "género": "Drama"
+    },
+    {
+        "titulo": "Mujer bonita",
+        "sinopsis": "Un hombre de negocios se enamora de una prostituta y le ofrece una nueva vida.",
+        "actores": [
+            "Richard Gere",
+            "Julia Roberts"
+        ],
+        "poster": "posters/mujerbonita.jpg",
+        "puntuacion": "7.0",
+        "género": "Romance"
+    },
+    {
+        "titulo": "Siete años en el Tíbet",
+        "sinopsis": "Un escalador austríaco se convierte en amigo del Dalai Lama durante su exilio en el Tíbet.",
+        "actores": [
+            "Brad Pitt",
+            "David Thewlis"
+        ],
+        "poster": "posters/sieteañoseneltibet.jpg",
+        "puntuacion": "7",
+        "género": "Aventura"
+    },
+    {
+        "titulo": "Milagro en la celda 7",
+        "sinopsis": "Un padre con discapacidad intelectual es encarcelado injustamente y su hija lucha por demostrar su inocencia.",
+        "actores": [
+            "Aras Bulut İynemli",
+            "İsmail Hacıoğlu"
+        ],
+        "poster": "posters/milagroenlacelda7.jpg",
+        "puntuacion": "9",
+        "género": "Drama"
+    },
+    {
+        "titulo": "500 días con ella",
+        "sinopsis": "Un joven recuerda los 500 días que pasó con una mujer que creía su alma gemela.",
+        "actores": [
+            "Joseph Gordon-Levitt",
+            "Zooey Deschanel"
+        ],
+        "poster": "posters/500diasconella.jpg",
+        "puntuacion": "10",
+        "género": "Romance"
+    },
+    {
+        "titulo": "Forrest Gump",
+        "sinopsis": "La extraordinaria vida de un hombre simple con un corazón puro que marca grandes momentos en la historia estadounidense.",
+        "actores": [
+            "Tom Hanks",
+            "Robin Wright"
+        ],
+        "poster": "posters/forrestgump.jpg",
+        "puntuacion": "8",
+        "género": "Drama"
+    },
+    {
+    "titulo": "Una esposa de mentira",
+    "sinopsis": "Un hombre finge tener una novia para impresionar a su familia, pero las cosas se complican cuando la mentira se convierte en realidad.",
+    "actores": [
+        "Adam Sandler",
+        "Jennifer Aniston"
+    ],
+    "poster": "posters/unaesposadementira.jpg",
+    "puntuacion": "9.5",
+    "género": "Comedia"
+}
 
+]

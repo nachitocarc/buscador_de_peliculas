@@ -20,13 +20,13 @@ class MainWindow(QMainWindow):
 
         self._ui.boton_buscar_pelicula.clicked.connect(self.__buscar_pelicula)
         self._ui.boton_buscar_por_actores.clicked.connect(self.__abrir_buscar_por_actores)
-        self._ui.list_widget.itemClicked.connect(self.__mostrar_detalles_pelicula)
+        self._ui.catalogo.itemClicked.connect(self.__mostrar_detalles_pelicula)
 
     def __cargar_peliculas(self):
         peliculas = self._modelo.obtener_peliculas()
-        self._ui.list_widget.clear()
+        self._ui.catalogo.clear()
         for pelicula in peliculas:
-            self._ui.list_widget.addItem(pelicula['titulo'])
+            self._ui.catalogo.addItem(pelicula['titulo'])
 
     def __configurar_completer(self, opciones, line_edit):
         completer = QCompleter(opciones, self)
@@ -35,11 +35,11 @@ class MainWindow(QMainWindow):
 
     def __buscar_pelicula(self):
         nombre_pelicula = self._ui.line_edit.text()
-        self._ui.list_widget.clear()
+        self._ui.catalogo.clear()
         peliculas_encontradas = self._modelo.buscar_pelicula(nombre_pelicula)
 
         for pelicula in peliculas_encontradas:
-            self._ui.list_widget.addItem(pelicula['titulo'])
+            self._ui.catalogo.addItem(pelicula['titulo'])
 
     def __mostrar_detalles_pelicula(self, item):
         titulo_pelicula = item.text()
@@ -75,7 +75,6 @@ class MainWindow(QMainWindow):
         dialog.exec()
 
     def __buscar_por_dos_actores(self, actor1, actor2):
-
         if not actor1.strip() or not actor2.strip():
             error_dialog = QDialog(self)
             error_dialog.setWindowTitle("Error")
@@ -88,9 +87,9 @@ class MainWindow(QMainWindow):
 
         peliculas_encontradas = self._modelo.buscar_por_dos_actores(actor1, actor2)
 
-        self._ui.list_widget.clear()
+        self._ui.catalogo.clear()
         for titulo in peliculas_encontradas:
-            self._ui.list_widget.addItem(titulo)
+            self._ui.catalogo.addItem(titulo)
 
 
 if __name__ == "__main__":
@@ -99,5 +98,4 @@ if __name__ == "__main__":
     modelo = ModeloPeliculas("peliculas.json")
     window = MainWindow(modelo)
     window.show()
-
     sys.exit(app.exec())

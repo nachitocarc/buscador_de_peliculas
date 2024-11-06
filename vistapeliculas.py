@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'nacho.ui'
-##
-## Created by: Qt User Interface Compiler version 6.7.2
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide6.QtCore import (QCoreApplication, QMetaObject)
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit,
@@ -15,7 +5,7 @@ from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit,
 
 
 class UiMainWindow(object):
-    def _setup_ui(self, main_window):
+    def setup_ui(self, main_window):
         if not main_window.objectName():
             main_window.setObjectName(u"MainWindow")
         main_window.resize(800, 600)
@@ -64,12 +54,12 @@ class UiMainWindow(object):
 class DetallesPeliculaDialog(QDialog):
     def __init__(self, pelicula, parent=None):
         super().__init__(parent)
-        self.setWindowTitle(pelicula['titulo'])
+        self.setWindowTitle(pelicula.titulo)
 
         layout = QVBoxLayout(self)
 
         poster_label = QLabel(self)
-        poster_pixmap = QPixmap(pelicula["poster"])
+        poster_pixmap = QPixmap(pelicula.poster)
 
         if poster_pixmap.isNull():
             poster_label.setText("No se pudo cargar el póster.")
@@ -79,19 +69,19 @@ class DetallesPeliculaDialog(QDialog):
 
         layout.addWidget(poster_label)
 
-        titulo_label = QLabel(f"Título: {pelicula['titulo']}", self)
+        titulo_label = QLabel(f"Título: {pelicula.titulo}", self)
         layout.addWidget(titulo_label)
 
-        sinopsis_label = QLabel(f"Sinopsis: {pelicula['sinopsis']}", self)
+        sinopsis_label = QLabel(f"Sinopsis: {pelicula.sinopsis}", self)
         layout.addWidget(sinopsis_label)
 
-        puntuacion_label = QLabel(f"Puntuación: {pelicula['puntuacion']}", self)
+        puntuacion_label = QLabel(f"Puntuación: {pelicula.puntuacion}", self)
         layout.addWidget(puntuacion_label)
 
-        actores_label = QLabel(f"Actores: {', '.join(pelicula['actores'])}", self)
+        actores_label = QLabel(f"Actores: {', '.join(pelicula.actores)}", self)
         layout.addWidget(actores_label)
 
-        genero_label = QLabel(f"Genero: {pelicula['género']}", self)
+        genero_label = QLabel(f"Género: {pelicula.género}", self)
         layout.addWidget(genero_label)
 
         self.setLayout(layout)

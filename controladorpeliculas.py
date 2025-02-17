@@ -1,9 +1,9 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QCompleter
 from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QMainWindow, QCompleter, QDialog, QVBoxLayout, QLabel, QPushButton, \
+    QLineEdit
 from modelopeliculas import ModeloPeliculas
 from vistapeliculas import UiMainWindow, DetallesPeliculaDialog
-
 
 class MainWindow(QMainWindow):
     def __init__(self, modelo):
@@ -21,31 +21,31 @@ class MainWindow(QMainWindow):
         self.__ui.catalogo.itemClicked.connect(self.__mostrar_detalles_pelicula)
 
     def __cargar_peliculas(self):
-        peliculas = self.__modelo.obtener_peliculas()
         self.__ui.catalogo.clear()
-        for pelicula in peliculas:
-            self.__ui.catalogo.addItem(pelicula.titulo)
+        peliculas = self.__modelo.obtener_titulos()
+        self.__ui.catalogo.addItems(peliculas)
+
+    def __buscar_pelicula(self):
+        nombre = self.__ui.line_edit.text().strip()
+        if not nombre:
+            self.__cargar_peliculas()
+            return
+        peliculas_encontradas = self.__modelo.buscar_pelicula(nombre)
+        self.__ui.catalogo.clear()
+        self.__ui.catalogo.addItems([p["titulo"] for p in peliculas_encontradas])
+
+    def __mostrar_detalles_pelicula(self, item):
+        titulo_pelicula = item.text()
+        datos_pelicula = self.__modelo.obtener_informacion_pelicula(titulo_pelicula)
+
+        if datos_pelicula:
+            detalles_dialog = DetallesPeliculaDialog(datos_pelicula, self)
+            detalles_dialog.exec()
 
     def __configurar_completer(self, opciones, line_edit):
         completer = QCompleter(opciones, self)
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         line_edit.setCompleter(completer)
-
-    def __buscar_pelicula(self):
-        nombre_pelicula = self.__ui.line_edit.text()
-        self.__ui.catalogo.clear()
-        peliculas_encontradas = self.__modelo.buscar_pelicula(nombre_pelicula)
-
-        for pelicula in peliculas_encontradas:
-            self.__ui.catalogo.addItem(pelicula.titulo)
-
-    def __mostrar_detalles_pelicula(self, item):
-        titulo_pelicula = item.text()
-        pelicula = self.__modelo.obtener_informacion_pelicula(titulo_pelicula)
-
-        if pelicula:
-            detalles_dialog = DetallesPeliculaDialog(pelicula, self)
-            detalles_dialog.exec()
 
     def __abrir_buscar_por_actores(self):
         dialog = QDialog(self)
@@ -82,13 +82,11 @@ class MainWindow(QMainWindow):
             error_dialog.setLayout(layout)
             error_dialog.exec()
             return
-
         peliculas_encontradas = self.__modelo.buscar_por_dos_actores(actor1, actor2)
 
         self.__ui.catalogo.clear()
         for titulo in peliculas_encontradas:
             self.__ui.catalogo.addItem(titulo)
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

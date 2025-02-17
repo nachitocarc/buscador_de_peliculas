@@ -8,7 +8,7 @@
         ],
         "poster": "posters/soncomoniños.jpg",
         "puntuacion": "9.0",
-        "género": "Comedia"
+        "genero": "Comedia"
     },
     {
         "titulo": "Titanic",
@@ -19,7 +19,7 @@
         ],
         "poster": "posters/titanic.jpg",
         "puntuacion": "6.5",
-        "género": "Romance"
+        "genero": "Romance"
     },
     {
         "titulo": "Mi primer beso",
@@ -30,7 +30,7 @@
         ],
         "poster": "posters/miprimerbeso.jpg",
         "puntuacion": "9.5",
-        "género": "Drama"
+        "genero": "Drama"
     },
     {
         "titulo": "Chiquito pero peligroso",
@@ -41,7 +41,7 @@
         ],
         "poster": "posters/chiquitoperopeligroso.jpg",
         "puntuacion": "8",
-        "género": "Acción"
+        "genero": "Acción"
     },
     {
         "titulo": "Violet y Finch",
@@ -52,7 +52,7 @@
         ],
         "poster": "posters/violetyfinch.jpg",
         "puntuacion": "8.5",
-        "género": "Romance"
+        "genero": "Romance"
     },
     {
         "titulo": "El hijo de la novia",
@@ -63,7 +63,7 @@
         ],
         "poster": "posters/elhijodelanovia.jpg",
         "puntuacion": "7.5",
-        "género": "Drama"
+        "genero": "Drama"
     },
     {
         "titulo": "Super cool",
@@ -74,7 +74,7 @@
         ],
         "poster": "posters/supercool.jpg",
         "puntuacion": "9.5",
-        "género": "Comedia"
+        "genero": "Comedia"
     },
     {
         "titulo": "Un espía y medio",
@@ -85,7 +85,7 @@
         ],
         "poster": "posters/unespiaymedio.jpg",
         "puntuacion": "8",
-        "género": "Acción"
+        "genero": "Acción"
     },
     {
         "titulo": "Entre la vida y la muerte",
@@ -96,7 +96,7 @@
         ],
         "poster": "posters/entrelavidaylamuerte.jpg",
         "puntuacion": "7.5",
-        "género": "Drama"
+        "genero": "Drama"
     },
     {
         "titulo": "La vida es bella",
@@ -107,7 +107,7 @@
         ],
         "poster": "posters/lavidaesbella.jpg",
         "puntuacion": "8.5",
-        "género": "Drama"
+        "genero": "Drama"
     },
     {
         "titulo": "Mujer bonita",
@@ -118,7 +118,7 @@
         ],
         "poster": "posters/mujerbonita.jpg",
         "puntuacion": "7.0",
-        "género": "Romance"
+        "genero": "Romance"
     },
     {
         "titulo": "Siete años en el Tíbet",
@@ -129,7 +129,7 @@
         ],
         "poster": "posters/sieteañoseneltibet.jpg",
         "puntuacion": "7",
-        "género": "Aventura"
+        "genero": "Aventura"
     },
     {
         "titulo": "Milagro en la celda 7",
@@ -140,7 +140,7 @@
         ],
         "poster": "posters/milagroenlacelda7.jpg",
         "puntuacion": "9",
-        "género": "Drama"
+        "genero": "Drama"
     },
     {
         "titulo": "500 días con ella",
@@ -151,7 +151,7 @@
         ],
         "poster": "posters/500diasconella.jpg",
         "puntuacion": "10",
-        "género": "Romance"
+        "genero": "Romance"
     },
     {
         "titulo": "Forrest Gump",
@@ -162,7 +162,7 @@
         ],
         "poster": "posters/forrestgump.jpg",
         "puntuacion": "8",
-        "género": "Drama"
+        "genero": "Drama"
     },
     {
     "titulo": "Una esposa de mentira",
@@ -173,7 +173,6 @@
     ],
     "poster": "posters/unaesposadementira.jpg",
     "puntuacion": "9.5",
-    "género": "Comedia"
+    "genero": "Comedia"
 }
-
 ]

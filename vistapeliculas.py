@@ -1,87 +1,61 @@
-from PySide6.QtCore import (QCoreApplication, QMetaObject)
+from PySide6.QtCore import QMetaObject
 from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit,
-                               QPushButton, QStatusBar, QWidget, QListWidget, QDialog, QVBoxLayout)
+from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit, QPushButton, QStatusBar,
+                               QWidget, QListWidget, QDialog, QVBoxLayout)
 
-
-class UiMainWindow(object):
+class UiMainWindow:
     def setup_ui(self, main_window):
-        if not main_window.objectName():
-            main_window.setObjectName(u"MainWindow")
+        main_window.setObjectName("MainWindow")
         main_window.resize(800, 600)
         self.centralwidget = QWidget(main_window)
-        self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName(u"gridLayout")
 
-        self.boton_buscar_pelicula = QPushButton(self.centralwidget)
-        self.boton_buscar_pelicula.setObjectName(u"pushButton_2")
+        self.boton_buscar_pelicula = QPushButton("Buscar", self.centralwidget)
         self.gridLayout.addWidget(self.boton_buscar_pelicula, 0, 3, 1, 1)
 
         self.line_edit = QLineEdit(self.centralwidget)
-        self.line_edit.setObjectName(u"lineEdit")
+        self.line_edit.setPlaceholderText("Introduzca el nombre de la película")
         self.gridLayout.addWidget(self.line_edit, 0, 2, 1, 1)
 
-        self.boton_buscar_por_actores = QPushButton(self.centralwidget)
-        self.boton_buscar_por_actores.setObjectName(u"pushButton")
+        self.boton_buscar_por_actores = QPushButton("Buscar por actores", self.centralwidget)
         self.gridLayout.addWidget(self.boton_buscar_por_actores, 0, 0, 1, 1)
+
+        self.label = QLabel("Película:", self.centralwidget)
+        self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
+
+        self.catalogo = QListWidget(self.centralwidget)
+        self.gridLayout.addWidget(self.catalogo, 2, 0, 1, 4)
+
+        main_window.setCentralWidget(self.centralwidget)
+        self.statusbar = QStatusBar(main_window)
+        main_window.setStatusBar(self.statusbar)
 
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
         self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
 
-        self.catalogo = QListWidget(self.centralwidget)
-        self.catalogo.setObjectName(u"listView")
-        self.gridLayout.addWidget(self.catalogo, 2, 0, 1, 4)
-
-        main_window.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(main_window)
-        self.statusbar.setObjectName(u"statusbar")
-        main_window.setStatusBar(self.statusbar)
-
-        self.__retranslateui(main_window)
         QMetaObject.connectSlotsByName(main_window)
 
-    def __retranslateui(self, main_window):
-        main_window.setWindowTitle(QCoreApplication.translate("MainWindow", u"Buscador de peliculas", None))
-        self.boton_buscar_pelicula.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
-        self.line_edit.setPlaceholderText(
-            QCoreApplication.translate("MainWindow", u"Introduzca el nombre de la pelicula", None))
-        self.boton_buscar_por_actores.setText(QCoreApplication.translate("MainWindow", u"Buscar por actores", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Pelicula:", None))
-
-
 class DetallesPeliculaDialog(QDialog):
-    def __init__(self, pelicula, parent=None):
+    def __init__(self, datos_pelicula, parent=None):
         super().__init__(parent)
-        self.setWindowTitle(pelicula.titulo)
+        self.setWindowTitle(datos_pelicula["titulo"])
 
         layout = QVBoxLayout(self)
 
         poster_label = QLabel(self)
-        poster_pixmap = QPixmap(pelicula.poster)
+        poster_pixmap = QPixmap(datos_pelicula["poster"])
 
         if poster_pixmap.isNull():
             poster_label.setText("No se pudo cargar el póster.")
         else:
-            scaled_pixmap = poster_pixmap.scaled(200, 300)
-            poster_label.setPixmap(scaled_pixmap)
+            poster_label.setPixmap(poster_pixmap.scaled(200, 300))
 
         layout.addWidget(poster_label)
-
-        titulo_label = QLabel(f"Título: {pelicula.titulo}", self)
-        layout.addWidget(titulo_label)
-
-        sinopsis_label = QLabel(f"Sinopsis: {pelicula.sinopsis}", self)
-        layout.addWidget(sinopsis_label)
-
-        puntuacion_label = QLabel(f"Puntuación: {pelicula.puntuacion}", self)
-        layout.addWidget(puntuacion_label)
-
-        actores_label = QLabel(f"Actores: {', '.join(pelicula.actores)}", self)
-        layout.addWidget(actores_label)
-
-        genero_label = QLabel(f"Género: {pelicula.género}", self)
-        layout.addWidget(genero_label)
+        layout.addWidget(QLabel(f"Título: {datos_pelicula['titulo']}", self))
+        layout.addWidget(QLabel(f"Sinopsis: {datos_pelicula['sinopsis']}", self))
+        layout.addWidget(QLabel(f"Puntuación: {datos_pelicula['puntuacion']}", self))
+        layout.addWidget(QLabel(f"Actores: {', '.join(datos_pelicula['actores'])}", self))
+        layout.addWidget(QLabel(f"Género: {datos_pelicula['genero']}", self))
 
         self.setLayout(layout)

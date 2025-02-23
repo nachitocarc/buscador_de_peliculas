@@ -35,6 +35,12 @@ class ModeloPeliculas:
             datos = json.load(archivo)
             return [Pelicula(**pelicula) for pelicula in datos]
 
+    def obtener_generos(self):
+        generos = set()
+        for pelicula in self.__peliculas:
+            generos.add(pelicula.obtener_datos()["genero"])
+        return list(generos)
+
     def buscar_pelicula(self, nombre):
         nombre = nombre.lower()
         return [pelicula.obtener_datos() for pelicula in self.__peliculas if nombre in pelicula.obtener_titulo().lower()]
@@ -58,4 +64,7 @@ class ModeloPeliculas:
         for pelicula in self.__peliculas:
             actores.update(pelicula.obtener_datos()["actores"])
         return list(actores)
+
+    def buscar_por_genero(self, genero):
+        return [pelicula.obtener_datos() for pelicula in self.__peliculas if pelicula.obtener_datos()["genero"].lower() == genero.lower()]
 

@@ -1,20 +1,23 @@
 import sys
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QApplication, QMainWindow, QCompleter, QDialog, QVBoxLayout, QLabel, QPushButton, \
-    QLineEdit
+from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QVBoxLayout, QLabel, QPushButton, QLineEdit, \
+    QCompleter
 from modelopeliculas import ModeloPeliculas
 from vistapeliculas import UiMainWindow, DetallesPeliculaDialog
+
 
 class MainWindow(QMainWindow):
     def __init__(self, modelo):
         super().__init__()
         self.__ui = UiMainWindow()
-        self.__ui.setup_ui(self)
+        self.__ui.setup_ui(self, modelo)
 
         self.__modelo = modelo
 
         self.__cargar_peliculas()
         self.__configurar_completer(self.__modelo.obtener_titulos(), self.__ui.line_edit)
+
+        self.__ui.generos.currentTextChanged.connect(self.__buscar_por_genero)
 
         self.__ui.boton_buscar_pelicula.clicked.connect(self.__buscar_pelicula)
         self.__ui.boton_buscar_por_actores.clicked.connect(self.__abrir_buscar_por_actores)
@@ -95,6 +98,15 @@ class MainWindow(QMainWindow):
         self.__ui.catalogo.clear()
         for titulo in peliculas_encontradas:
             self.__ui.catalogo.addItem(titulo)
+
+    def __buscar_por_genero(self):
+        genero = self.__ui.generos.currentText().strip()
+        if not genero or genero == "Seleccione un género":
+            self.__cargar_peliculas()
+            return
+        peliculas_encontradas = self.__modelo.buscar_por_genero(genero)
+        self.__ui.catalogo.clear()
+        self.__ui.catalogo.addItems([p["titulo"] for p in peliculas_encontradas])
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

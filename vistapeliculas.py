@@ -1,10 +1,11 @@
 from PySide6.QtCore import QMetaObject
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit, QPushButton, QStatusBar,
-                               QWidget, QListWidget, QDialog, QVBoxLayout)
+                               QWidget, QListWidget, QDialog, QVBoxLayout, QComboBox)
 
 class UiMainWindow:
-    def setup_ui(self, main_window):
+    def setup_ui(self, main_window, modelo):
+        self.__modelo = modelo
         main_window.setObjectName("MainWindow")
         main_window.resize(800, 600)
         self.centralwidget = QWidget(main_window)
@@ -26,6 +27,10 @@ class UiMainWindow:
         self.catalogo = QListWidget(self.centralwidget)
         self.gridLayout.addWidget(self.catalogo, 2, 0, 1, 4)
 
+        self.generos = QComboBox(self.centralwidget)
+        self.gridLayout.addWidget(self.generos, 0, 1, 1, 1)
+        self.generos.addItems(self.__modelo.obtener_generos())
+
         main_window.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(main_window)
         main_window.setStatusBar(self.statusbar)
@@ -35,6 +40,7 @@ class UiMainWindow:
         self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
 
         QMetaObject.connectSlotsByName(main_window)
+
 
 class DetallesPeliculaDialog(QDialog):
     def __init__(self, titulo, sinopsis, puntuacion, actores, genero, poster, parent=None):

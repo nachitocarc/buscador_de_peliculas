@@ -39,7 +39,15 @@ class MainWindow(QMainWindow):
         datos_pelicula = self.__modelo.obtener_informacion_pelicula(titulo_pelicula)
 
         if datos_pelicula:
-            detalles_dialog = DetallesPeliculaDialog(datos_pelicula, self)
+            detalles_dialog = DetallesPeliculaDialog(
+                datos_pelicula["titulo"],
+                datos_pelicula["sinopsis"],
+                datos_pelicula["puntuacion"],
+                datos_pelicula["actores"],
+                datos_pelicula["genero"],
+                datos_pelicula["poster"],
+                self
+            )
             detalles_dialog.exec()
 
     def __configurar_completer(self, opciones, line_edit):

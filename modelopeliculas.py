@@ -58,3 +58,4 @@ class ModeloPeliculas:
         for pelicula in self.__peliculas:
             actores.update(pelicula.obtener_datos()["actores"])
         return list(actores)
+

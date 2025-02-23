@@ -37,14 +37,14 @@ class UiMainWindow:
         QMetaObject.connectSlotsByName(main_window)
 
 class DetallesPeliculaDialog(QDialog):
-    def __init__(self, datos_pelicula, parent=None):
+    def __init__(self, titulo, sinopsis, puntuacion, actores, genero, poster, parent=None):
         super().__init__(parent)
-        self.setWindowTitle(datos_pelicula["titulo"])
+        self.setWindowTitle(titulo)
 
         layout = QVBoxLayout(self)
 
         poster_label = QLabel(self)
-        poster_pixmap = QPixmap(datos_pelicula["poster"])
+        poster_pixmap = QPixmap(poster)
 
         if poster_pixmap.isNull():
             poster_label.setText("No se pudo cargar el póster.")
@@ -52,10 +52,11 @@ class DetallesPeliculaDialog(QDialog):
             poster_label.setPixmap(poster_pixmap.scaled(200, 300))
 
         layout.addWidget(poster_label)
-        layout.addWidget(QLabel(f"Título: {datos_pelicula['titulo']}", self))
-        layout.addWidget(QLabel(f"Sinopsis: {datos_pelicula['sinopsis']}", self))
-        layout.addWidget(QLabel(f"Puntuación: {datos_pelicula['puntuacion']}", self))
-        layout.addWidget(QLabel(f"Actores: {', '.join(datos_pelicula['actores'])}", self))
-        layout.addWidget(QLabel(f"Género: {datos_pelicula['genero']}", self))
+        layout.addWidget(QLabel(f"Título: {titulo}", self))
+        layout.addWidget(QLabel(f"Sinopsis: {sinopsis}", self))
+        layout.addWidget(QLabel(f"Puntuación: {puntuacion}", self))
+        layout.addWidget(QLabel(f"Actores: {', '.join(actores)}", self))
+        layout.addWidget(QLabel(f"Género: {genero}", self))
 
         self.setLayout(layout)
+

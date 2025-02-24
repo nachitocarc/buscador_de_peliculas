@@ -101,9 +101,6 @@ class MainWindow(QMainWindow):
 
     def __buscar_por_genero(self):
         genero = self.__ui.generos.currentText().strip()
-        if not genero or genero == "Seleccione un género":
-            self.__cargar_peliculas()
-            return
         peliculas_encontradas = self.__modelo.buscar_por_genero(genero)
         self.__ui.catalogo.clear()
         self.__ui.catalogo.addItems([p["titulo"] for p in peliculas_encontradas])

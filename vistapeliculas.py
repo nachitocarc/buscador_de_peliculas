@@ -65,4 +65,3 @@ class DetallesPeliculaDialog(QDialog):
         layout.addWidget(QLabel(f"Género: {genero}", self))
 
         self.setLayout(layout)
-

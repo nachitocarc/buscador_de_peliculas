@@ -1,7 +1,6 @@
 from PySide6.QtCore import QMetaObject
 from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit, QPushButton, QStatusBar,
-                               QWidget, QListWidget, QDialog, QVBoxLayout, QComboBox)
+from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit, QPushButton, QWidget, QListWidget, QDialog, QVBoxLayout, QComboBox)
 
 class UiMainWindow:
     def setup_ui(self, main_window, modelo):
@@ -32,8 +31,7 @@ class UiMainWindow:
         self.generos.addItems(self.__modelo.obtener_generos())
 
         main_window.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(main_window)
-        main_window.setStatusBar(self.statusbar)
+
 
 
         QMetaObject.connectSlotsByName(main_window)

@@ -35,9 +35,6 @@ class UiMainWindow:
         self.statusbar = QStatusBar(main_window)
         main_window.setStatusBar(self.statusbar)
 
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName(u"label")
-        self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
 
         QMetaObject.connectSlotsByName(main_window)
 

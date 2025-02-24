@@ -67,4 +67,3 @@ class ModeloPeliculas:
 
     def buscar_por_genero(self, genero):
         return [pelicula.obtener_datos() for pelicula in self.__peliculas if pelicula.obtener_datos()["genero"].lower() == genero.lower()]
-

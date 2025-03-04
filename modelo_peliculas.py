@@ -1,10 +1,21 @@
 import json
 
+class Actor:
+    def __init__(self, nombre):
+        self.__nombre = nombre
+
+    def obtener_nombre(self):
+        return self.__nombre
+
+    def __str__(self):
+        return self.__nombre
+
+
 class Pelicula:
     def __init__(self, titulo, sinopsis, actores, poster, puntuacion, genero):
         self.__titulo = titulo
         self.__sinopsis = sinopsis
-        self.__actores = actores
+        self.__actores = [Actor(actor) for actor in actores]
         self.__poster = poster
         self.__puntuacion = puntuacion
         self.__genero = genero
@@ -13,20 +24,21 @@ class Pelicula:
         return {
             "titulo": self.__titulo,
             "sinopsis": self.__sinopsis,
-            "actores": self.__actores,
+            "actores": [actor.obtener_nombre() for actor in self.__actores],
             "poster": self.__poster,
             "puntuacion": self.__puntuacion,
             "genero": self.__genero
         }
 
     def tiene_actor(self, actor):
-        return actor.lower() in (a.lower() for a in self.__actores)
+        actor = actor.lower()
+        return any(a.obtener_nombre().lower() == actor for a in self.__actores)
 
     def obtener_titulo(self):
         return self.__titulo
 
 
-class ModeloPeliculas:
+class Catalogo:
     def __init__(self, peliculas_json):
         self.__peliculas = self.__cargar_peliculas(peliculas_json)
 
@@ -36,10 +48,7 @@ class ModeloPeliculas:
             return [Pelicula(**pelicula) for pelicula in datos]
 
     def obtener_generos(self):
-        generos = set()
-        for pelicula in self.__peliculas:
-            generos.add(pelicula.obtener_datos()["genero"])
-        return list(generos)
+        return list({pelicula.obtener_datos()["genero"] for pelicula in self.__peliculas})
 
     def buscar_pelicula(self, nombre):
         nombre = nombre.lower()
@@ -51,8 +60,7 @@ class ModeloPeliculas:
                 return pelicula.obtener_datos()
 
     def buscar_por_dos_actores(self, actor1, actor2):
-        actor1 = actor1.lower()
-        actor2 = actor2.lower()
+        actor1, actor2 = actor1.lower(), actor2.lower()
         return [pelicula.obtener_titulo() for pelicula in self.__peliculas
                 if pelicula.tiene_actor(actor1) and pelicula.tiene_actor(actor2)]
 
@@ -60,10 +68,9 @@ class ModeloPeliculas:
         return [pelicula.obtener_titulo() for pelicula in self.__peliculas]
 
     def obtener_actores(self):
-        actores = set()
-        for pelicula in self.__peliculas:
-            actores.update(pelicula.obtener_datos()["actores"])
+        actores = {actor for pelicula in self.__peliculas for actor in pelicula.obtener_datos()["actores"]}
         return list(actores)
 
     def buscar_por_genero(self, genero):
-        return [pelicula.obtener_datos() for pelicula in self.__peliculas if pelicula.obtener_datos()["genero"].lower() == genero.lower()]
+        return [pelicula.obtener_datos() for pelicula in self.__peliculas
+                if pelicula.obtener_datos()["genero"].lower() == genero.lower()]

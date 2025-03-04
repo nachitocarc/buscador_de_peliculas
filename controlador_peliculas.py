@@ -2,8 +2,8 @@ import sys
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QVBoxLayout, QLabel, QPushButton, QLineEdit, \
     QCompleter
-from modelopeliculas import ModeloPeliculas
-from vistapeliculas import UiMainWindow, DetallesPeliculaDialog
+from modelo_peliculas import Catalogo
+from vista_peliculas import UiMainWindow, DetallesPeliculaDialog
 
 
 class MainWindow(QMainWindow):
@@ -107,7 +107,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    modelo = ModeloPeliculas("peliculas.json")
+    modelo = Catalogo("peliculas.json")
     window = MainWindow(modelo)
     window.show()
     sys.exit(app.exec())

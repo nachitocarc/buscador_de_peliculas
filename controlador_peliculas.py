@@ -1,24 +1,22 @@
-import sys
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QVBoxLayout, QLabel, QPushButton, QLineEdit, \
-    QCompleter
-from modelo_peliculas import Catalogo
+from PySide6.QtWidgets import QMainWindow, QDialog, QVBoxLayout, QLabel, QPushButton, QLineEdit, QCompleter
 from vista_peliculas import UiMainWindow, DetallesPeliculaDialog
 
 
-class MainWindow(QMainWindow):
+class Controlador(QMainWindow):
     def __init__(self, modelo):
         super().__init__()
+
         self.__ui = UiMainWindow()
         self.__ui.setup_ui(self, modelo)
 
         self.__modelo = modelo
 
         self.__cargar_peliculas()
+
         self.__configurar_completer(self.__modelo.obtener_titulos(), self.__ui.line_edit)
 
         self.__ui.generos.currentTextChanged.connect(self.__buscar_por_genero)
-
         self.__ui.boton_buscar_pelicula.clicked.connect(self.__buscar_pelicula)
         self.__ui.boton_buscar_por_actores.clicked.connect(self.__abrir_buscar_por_actores)
         self.__ui.catalogo.itemClicked.connect(self.__mostrar_detalles_pelicula)
@@ -104,10 +102,3 @@ class MainWindow(QMainWindow):
         peliculas_encontradas = self.__modelo.buscar_por_genero(genero)
         self.__ui.catalogo.clear()
         self.__ui.catalogo.addItems([p["titulo"] for p in peliculas_encontradas])
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    modelo = Catalogo("peliculas.json")
-    window = MainWindow(modelo)
-    window.show()
-    sys.exit(app.exec())

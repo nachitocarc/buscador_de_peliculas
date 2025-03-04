@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit, QPushButton, QWid
 class UiMainWindow:
     def setup_ui(self, main_window, modelo):
         self.__modelo = modelo
-        main_window.setObjectName("MainWindow")
+        main_window.setObjectName("Buscador de peliculas")
         main_window.resize(800, 600)
         self.centralwidget = QWidget(main_window)
         self.gridLayout = QGridLayout(self.centralwidget)

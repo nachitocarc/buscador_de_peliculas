@@ -7,6 +7,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     modelo = Catalogo("peliculas.json")
     ventana_principal = Controlador(modelo)
-    ventana_principal.show()
-
+    ventana_principal.mostrar_ventana()
     sys.exit(app.exec())
+

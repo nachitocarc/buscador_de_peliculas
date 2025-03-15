@@ -1,13 +1,19 @@
-from PySide6.QtCore import QMetaObject
+from PySide6.QtCore import QMetaObject, Qt
 from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit, QPushButton, QWidget, QListWidget, QDialog, QVBoxLayout, QComboBox)
+from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit, QPushButton, QWidget, QListWidget, QDialog, QVBoxLayout, QComboBox, QMainWindow, QCompleter)
 
-class UiMainWindow:
-    def setup_ui(self, main_window, modelo):
+class BuscadorDePeliculas(QMainWindow):
+    def __init__(self, modelo, controlador):
+        super().__init__()
         self.__modelo = modelo
-        main_window.setObjectName("Buscador de peliculas")
-        main_window.resize(800, 600)
-        self.centralwidget = QWidget(main_window)
+        self.controlador = controlador
+        self.__configurar_ui()
+
+
+    def __configurar_ui(self):
+        self.setObjectName("Buscador de peliculas")
+        self.resize(800, 600)
+        self.centralwidget = QWidget(self)
         self.gridLayout = QGridLayout(self.centralwidget)
 
         self.boton_buscar_pelicula = QPushButton("Buscar", self.centralwidget)
@@ -30,14 +36,47 @@ class UiMainWindow:
         self.gridLayout.addWidget(self.generos, 0, 1, 1, 1)
         self.generos.addItems(self.__modelo.obtener_generos())
 
-        main_window.setCentralWidget(self.centralwidget)
+        self.setCentralWidget(self.centralwidget)
+        QMetaObject.connectSlotsByName(self)
 
+        self.boton_buscar_por_actores.clicked.connect(self.__abrir_buscar_por_actores)
 
+    def __abrir_buscar_por_actores(self):
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Buscar por Actores")
+        layout = QVBoxLayout(dialog)
 
-        QMetaObject.connectSlotsByName(main_window)
+        label1 = QLabel("Ingresa el nombre del primer actor:", dialog)
+        layout.addWidget(label1)
+        actor1_input = QLineEdit(dialog)
+        layout.addWidget(actor1_input)
 
+        label2 = QLabel("Ingresa el nombre del segundo actor:", dialog)
+        layout.addWidget(label2)
+        actor2_input = QLineEdit(dialog)
+        layout.addWidget(actor2_input)
 
-class DetallesPeliculaDialog(QDialog):
+        self.__configurar_completer(self.__modelo.obtener_actores(), actor1_input)
+        self.__configurar_completer(self.__modelo.obtener_actores(), actor2_input)
+
+        boton_buscar = QPushButton("Buscar", dialog)
+        layout.addWidget(boton_buscar)
+
+        boton_buscar.clicked.connect(lambda: self.controlador.buscar_por_dos_actores(actor1_input.text(), actor2_input.text()))
+        dialog.setLayout(layout)
+        dialog.exec()
+
+    def actualizar_catalogo(self, peliculas):
+        self.catalogo.clear()
+        for pelicula in peliculas:
+            self.catalogo.addItem(pelicula["titulo"])
+
+    def __configurar_completer(self, opciones, line_edit):
+        completer = QCompleter(opciones, self)
+        completer.setCaseSensitivity(Qt.CaseInsensitive)
+        line_edit.setCompleter(completer)
+
+class DetallesPelicula(QDialog):
     def __init__(self, titulo, sinopsis, puntuacion, actores, genero, poster, parent=None):
         super().__init__(parent)
         self.setWindowTitle(titulo)

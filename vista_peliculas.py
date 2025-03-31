@@ -56,13 +56,15 @@ class BuscadorDePeliculas(QMainWindow):
         actor2_input = QLineEdit(dialog)
         layout.addWidget(actor2_input)
 
-        self.__configurar_completer(self.__modelo.obtener_actores(), actor1_input)
-        self.__configurar_completer(self.__modelo.obtener_actores(), actor2_input)
+        actores = [actor.obtener_nombre() for actor in self.__modelo.obtener_actores()]
+        self.__configurar_completer(actores, actor1_input)
+        self.__configurar_completer(actores, actor2_input)
 
         boton_buscar = QPushButton("Buscar", dialog)
         layout.addWidget(boton_buscar)
 
-        boton_buscar.clicked.connect(lambda: self.controlador.buscar_por_dos_actores(actor1_input.text(), actor2_input.text()))
+        boton_buscar.clicked.connect(
+            lambda: self.controlador.buscar_por_dos_actores(actor1_input.text(), actor2_input.text()))
         dialog.setLayout(layout)
         dialog.exec()
 
@@ -75,6 +77,7 @@ class BuscadorDePeliculas(QMainWindow):
         completer = QCompleter(opciones, self)
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         line_edit.setCompleter(completer)
+
 
 class DetallesPelicula(QDialog):
     def __init__(self, titulo, sinopsis, puntuacion, actores, genero, poster, parent=None):

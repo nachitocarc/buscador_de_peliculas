@@ -9,4 +9,3 @@ if __name__ == "__main__":
     ventana_principal = Controlador(modelo)
     ventana_principal.mostrar_ventana()
     sys.exit(app.exec())
-

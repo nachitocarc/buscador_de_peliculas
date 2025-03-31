@@ -33,7 +33,7 @@ class Pelicula:
         return self.__titulo
 
     def tiene_actor(self, actor):
-        return actor.lower() in (a.lower() for a in self.__actores)
+        return actor.lower() in (a.obtener_nombre().lower() for a in self.__actores)
 
 class Catalogo:
     def __init__(self, peliculas_json):
@@ -81,5 +81,3 @@ class Catalogo:
         actor1, actor2 = actor1.lower(), actor2.lower()
         return [pelicula.obtener_datos() for pelicula in self.__peliculas
                 if pelicula.tiene_actor(actor1) and pelicula.tiene_actor(actor2)]
-
-

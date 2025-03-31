@@ -74,4 +74,3 @@ class Controlador:
             self.vista.actualizar_catalogo(peliculas_encontradas)
         else:
             self.vista.actualizar_catalogo([])
-

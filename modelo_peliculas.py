@@ -23,7 +23,7 @@ class Pelicula:
         return {
             "titulo": self.__titulo,
             "sinopsis": self.__sinopsis,
-            "actores": self.__actores,
+            "actores": [actor.obtener_nombre() for actor in self.__actores],
             "poster": self.__poster,
             "puntuacion": self.__puntuacion,
             "genero": self.__genero
@@ -42,7 +42,17 @@ class Catalogo:
     def __cargar_peliculas(self, archivo_json):
         with open(archivo_json, 'r', encoding='utf-8') as archivo:
             datos = json.load(archivo)
-            return [Pelicula(**pelicula) for pelicula in datos]
+            return [
+                Pelicula(
+                    pelicula["titulo"],
+                    pelicula["sinopsis"],
+                    [Actor(nombre) for nombre in pelicula["actores"]],
+                    pelicula["poster"],
+                    pelicula["puntuacion"],
+                    pelicula["genero"]
+                )
+                for pelicula in datos
+            ]
 
     def obtener_generos(self):
         return list({p.obtener_datos()["genero"] for p in self.__peliculas})
@@ -65,7 +75,7 @@ class Catalogo:
         actores = set()
         for pelicula in self.__peliculas:
             actores.update(pelicula.obtener_datos()["actores"])
-        return list(actores)
+        return [Actor(nombre) for nombre in actores]
 
     def buscar_por_dos_actores(self, actor1, actor2):
         actor1, actor2 = actor1.lower(), actor2.lower()

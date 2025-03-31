@@ -174,5 +174,15 @@
     "poster": "posters/unaesposadementira.jpg",
     "puntuacion": "9.5",
     "genero": "Comedia"
-}
+},
+        {
+    "titulo": "El bicho siu",
+    "sinopsis": "Papá de niuls",
+    "actores": [
+        "aa",
+        "Jennifer Aniston"
+    ],
+    "poster": "posters/BICHO.jpg",
+    "puntuacion": "9.5",
+    "genero": "central"}
 ]
